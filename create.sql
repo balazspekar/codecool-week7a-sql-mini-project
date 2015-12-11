@@ -1,0 +1,36 @@
+CREATE DATABASE meetupsystemdb;
+
+USE meetupsystemdb;
+
+CREATE TABLE meetups
+(
+Id INTEGER NOT NULL,
+Start DATETIME NOT NULL,
+Location VARCHAR(150) NOT NULL,
+Topic VARCHAR(50) NOT NULL,
+Description VARCHAR(1000) NOT NULL
+);
+
+CREATE TABLE meetupregistrations
+(
+Id INTEGER NOT NULL,
+StatusId INTEGER NOT NULL,
+MeetupId INTEGER NOT NULL,
+UserId INTEGER NOT NULL
+);
+								  
+CREATE TABLE statuses
+(
+Id INTEGER NOT NULL,
+Value VARCHAR(50) NOT NULL
+);
+						
+CREATE TABLE Users
+(
+Id INTEGER NOT NULL,
+Name VARCHAR(100) NOT NULL,
+Birthdate DATETIME NOT NULL,
+Introduction VARCHAR(500),
+Avatar VARCHAR(1000),
+Email VARCHAR(150)
+);
