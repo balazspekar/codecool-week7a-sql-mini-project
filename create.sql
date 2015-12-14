@@ -1,6 +1,6 @@
-CREATE DATABASE meetupsystemdb;
+CREATE DATABASE IF NOT EXISTS meetup;
 
-USE meetupsystemdb;
+USE meetup;
 
 CREATE TABLE meetups
 (
@@ -8,7 +8,26 @@ Id INTEGER NOT NULL,
 Start DATETIME NOT NULL,
 Location VARCHAR(150) NOT NULL,
 Topic VARCHAR(50) NOT NULL,
-Description VARCHAR(1000) NOT NULL
+Description VARCHAR(1000) NOT NULL,
+PRIMARY KEY(Id)
+);
+					  
+CREATE TABLE statuses
+(
+Id INTEGER NOT NULL,
+Value VARCHAR(50) NOT NULL,
+PRIMARY KEY(Id)
+);
+						
+CREATE TABLE users
+(
+Id INTEGER NOT NULL,
+Name VARCHAR(100) NOT NULL,
+Birthdate DATETIME NOT NULL,
+Introduction VARCHAR(500),
+Avatar VARCHAR(1000),
+Email VARCHAR(150),
+PRIMARY KEY(Id)
 );
 
 CREATE TABLE meetupregistrations
@@ -16,21 +35,8 @@ CREATE TABLE meetupregistrations
 Id INTEGER NOT NULL,
 StatusId INTEGER NOT NULL,
 MeetupId INTEGER NOT NULL,
-UserId INTEGER NOT NULL
-);
-								  
-CREATE TABLE statuses
-(
-Id INTEGER NOT NULL,
-Value VARCHAR(50) NOT NULL
-);
-						
-CREATE TABLE Users
-(
-Id INTEGER NOT NULL,
-Name VARCHAR(100) NOT NULL,
-Birthdate DATETIME NOT NULL,
-Introduction VARCHAR(500),
-Avatar VARCHAR(1000),
-Email VARCHAR(150)
+UserId INTEGER NOT NULL,
+FOREIGN KEY(StatusId) REFERENCES statuses(Id),
+FOREIGN KEY(MeetupId) REFERENCES meetups(Id),
+FOREIGN KEY(UserId) REFERENCES users(Id)
 );

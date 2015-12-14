@@ -1,4 +1,4 @@
-use meetupsystemdb;
+use meetup;
 
 INSERT INTO meetups (id, start, location, topic, description) VALUES (1, "2016-01-10 10:30:00", "Miskolc", "SEO", "Search Engine Optimization Presentation");
 INSERT INTO meetups (id, start, location, topic, description) VALUES (2, "2016-02-12 11:30:00", "Budapest", "Python", "Python Presentation");
